@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h2>Entradas al mejor Evento</h2>
+    <script>
+        let entradas = {
+
+            "Nombre": [],
+            "Cantidad": [],
+            "Precio": [],
+            "tiempo": [],
+        }
+
+        let cantidadEntradas = Number(prompt("cuantas entradas vas a comprar ? "));
+        for (let i = 0; i < cantidadEntradas; i++) {
+            for (let claves in entradas) {
+                entradas[claves][i] = prompt("Ingrese el " + claves + " #" + (i + 1));
+            }
+        }
+        let totalEvento = 0;
+        let tiempoTotal = 0;
+
+        for (let j = 0; j < cantidadEntradas; j++) {
+            let totalEntradas = 0;
+
+            for (let entr in entradas) {
+                document.write(entr + ": " + entradas[entr][j] + "<br/>");
+            }
+
+            totalEntradas = Number(entradas.Cantidad[j]) * Number(entradas.Precio[j]);
+            tiempoTotal += Number(entradas.tiempo[j]);
+
+            totalEvento += totalEntradas;
+
+            document.write("Total del Evento: " + totalEntradas + "<br/>");
+            document.write("-------------------------------------<hr/>");
+        }
+
+        document.write("Total a pagar por todas las Entradas: " + totalEvento + "<br/>");
+
+        if (tiempoTotal > 10) {
+            document.write("¡Advertencia! El tiempo total reservado excede las 10 horas: " + tiempoTotal + " horas.<br/>");
+        } else {
+            document.write("Tiempo total reservado: " + tiempoTotal + " horas.<br/>");
+        }
+
+        if (totalEvento > 500000) {
+            let descuento = totalEvento * 0.10;
+            totalEvento -= descuento;
+            document.write("Descuento aplicado: " + descuento + "<br/>");
+        }
+
+        document.write("Total final a pagar por todas las Entradas (con descuento si aplica): " + totalEvento + "<br/>");
+
+    </script>
+
+
+
+
+</body>
+
+</html>
